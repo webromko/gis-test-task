@@ -1,0 +1,24 @@
+<div class="container">
+    <div class="header">
+        <div class="header__logo">
+            <app-icon [iconName]="'logo'"></app-icon>
+        </div>
+        <div class="header__navigation"></div>
+        <nav class="header__navigation">
+            <div class="header__navigation-menu">
+                <ul class="header__navigation-menu h-reset-list">
+                    <li *ngFor="let navItem of navMenu">
+                        <a
+                            class="btn btn-outline-primary"
+                            [routerLink]="navItem.routerLink"
+                            [routerLinkActive]="navItem.routerLinkActive"
+                        >
+                            <app-icon *ngIf="navItem.icon" [iconName]="navItem.icon"></app-icon>
+                            <span *ngIf="navItem.text">{{ navItem.text }}</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+</div>

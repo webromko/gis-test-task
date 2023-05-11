@@ -1,0 +1,47 @@
+@import './../../../../variables';
+@import './../../../../bootstrap-variables.scss';
+
+:host {
+    display: block;
+    width: 100%;
+    background-color: $theme-main-color;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 1.5rem;
+    padding-top: 1.5rem;
+
+    &__logo {
+        color: $theme-secondary-color;
+        font-size: 5.5rem;
+
+        app-icon {
+            display: block;
+        }
+    }
+
+    &__navigation {
+        &-menu {
+            ul {
+                display: flex;
+                padding: 1rem;
+                background-color: $theme-secondary-color;
+                border-radius: $border-radius;
+            }
+
+            li {
+                &:not(:last-child) {
+                    margin-right: 1rem;
+                }
+
+                app-icon {
+                    margin-right: 0.5rem;
+                    vertical-align: middle;
+                }
+            }
+        }
+    }
+}
