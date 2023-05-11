@@ -1,0 +1,5 @@
+/.angular/cache/
+/dist/
+/node_modules/
+*.log
+package-lock.json
