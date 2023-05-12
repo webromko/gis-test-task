@@ -8,6 +8,24 @@
     display: block;
     width: 100%;
     background-color: $theme-main-color;
+    min-height: 8.5rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    @include media-breakpoint-down(xs) {
+        display: flex;
+        align-items: stretch;
+        min-height: 5.2rem;
+    }
+
+    .container {
+        @include media-breakpoint-down(xs) {
+            display: flex;
+            align-items: stretch;
+        }
+    }
 }
 
 .header {
@@ -17,6 +35,8 @@
 
     @include media-breakpoint-down(xs) {
         align-items: stretch;
+        width: 100%;
+        flex-basis: 100%;
     }
 
     &__logo {
@@ -27,6 +47,7 @@
             padding-bottom: 1rem;
             padding-top: 1rem;
             font-size: 3rem;
+            flex-shrink: 0;
         }
                     
         @include media-breakpoint-up(sm) {
@@ -44,9 +65,17 @@
         @include media-breakpoint-down(xs) {
             flex-grow: 1;
             margin-right: math.div($grid-gutter-width, -2);
+            display: flex;
+            align-items: stretch;
         }
 
         &-menu {
+            @include media-breakpoint-down(xs) {
+                display: flex;
+                align-items: stretch;
+                flex-grow: 1;
+            }
+
             &-txt {
                 @include media-breakpoint-down(xs) {
                     display: none;

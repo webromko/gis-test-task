@@ -2,7 +2,6 @@
 
 :host {
     display: block;
-    
 }
 
 .users__list {
@@ -14,5 +13,106 @@
             padding: 0.3rem;
             border: 0.1rem solid $theme-secondary-color;
         }
+
+        th {
+            background-color: $theme-secondary-color;
+            white-space: nowrap;
+        }
+
+        table {
+            @include media-breakpoint-down(xs) {
+                display: block;
+            }
+        }
+
+        thead {
+            @include media-breakpoint-down(xs) {
+                display: none;
+            }
+        }
+
+        tbody {
+            @include media-breakpoint-down(xs) {
+                display: block;
+            }
+        }
+
+        tr {
+            @include media-breakpoint-down(xs) {
+                display: block;
+            }
+
+            &:not(:last-child) {
+                @include media-breakpoint-down(xs) {
+                    margin-bottom: 0.5rem;
+                }
+            }
+        }
+
+        td {
+            white-space: normal;
+            word-break: break-word;
+            vertical-align: top;
+
+            @include media-breakpoint-down(xs) {
+                display: flex;
+                align-items: stretch;
+                padding: 0;
+            }
+
+            &:not(:last-child) {
+                @include media-breakpoint-down(xs) {
+                    border-bottom-width: 0;
+                }
+            }
+
+            &:not(:first-child) {
+                @include media-breakpoint-down(xs) {
+                    border-top-style: dotted;
+                }
+            }
+
+
+            &.fav-column {
+                vertical-align: middle;
+
+                .td-inner {
+                    text-align: center;
+
+                    @include media-breakpoint-down(xs) {
+                        text-align: right;
+                    }
+                }
+            }
+
+            &:before {
+                @include media-breakpoint-down(xs) {
+                    display: flex;
+                    content: attr(data-th);
+                    background-color: $theme-secondary-color;
+                    padding: 0.3rem;
+                    width: 25%;
+                    max-width: 25%;
+                    flex-basis: 25%;
+                    font-weight: 700;
+                    flex-shrink: 0;
+                }
+            }
+
+            .td-inner {
+                display: block;
+
+                @include media-breakpoint-down(xs) {
+                    padding: 0.3rem;
+                    flex-grow: 1;
+                }
+            }
+        }
+    }
+}
+
+.fav-btn {
+    app-icon {
+        display: block;
     }
 }

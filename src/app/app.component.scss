@@ -1,3 +1,8 @@
+@import 'bootstrap-scss/functions';
+@import 'bootstrap-scss/mixins';
+@import '../variables.scss';
+@import '../bootstrap-variables.scss';
+
 :host {
     display: flex;
     flex-direction: column;
@@ -7,5 +12,10 @@
 main {
     flex-grow: 1;
     width: 100%;
-    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    padding-top: 10rem;
+
+    @include media-breakpoint-down(xs) {
+        padding-top: 6.7rem;
+    }
 }

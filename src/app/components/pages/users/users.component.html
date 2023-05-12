@@ -14,16 +14,18 @@
             </thead>
             <tbody>
                 <tr *ngFor="let user of list">
-                    <th><a [href]="user.url">{{ user.login }}</a></th>
-                    <th>{{ user.id }}</th>
-                    <th>{{ user.url }}</th>
-                    <th>{{ user.type }}</th>
-                    <th>{{ user.score }}</th>
-                    <th>
-                        <button type="button" class="btn btn-primary">
-                            <app-icon [iconName]="'favorites'"></app-icon>
-                        </button>
-                    </th>
+                    <td data-th="Login:"><span class="td-inner"><a [href]="user.url">{{ user.login }}</a></span></td>
+                    <td data-th="Id:"><span class="td-inner">{{ user.id }}</span></td>
+                    <td data-th="Url:"><span class="td-inner">{{ user.url }}</span></td>
+                    <td data-th="Type:"><span class="td-inner">{{ user.type }}</span></td>
+                    <td data-th="Score:"><span class="td-inner">{{ user.score }}</span></td>
+                    <td data-th="Add to fav:" class="fav-column">
+                        <span class="td-inner">
+                            <button type="button" class="btn btn-primary fav-btn">
+                                <app-icon [iconName]="'favorites'"></app-icon>
+                            </button>
+                        </span>
+                    </td>
                 </tr>
             </tbody>
         </table>
