@@ -1,3 +1,6 @@
+@use "sass:math";
+@import 'bootstrap-scss/functions';
+@import 'bootstrap-scss/mixins';
 @import './../../../../variables';
 @import './../../../../bootstrap-variables.scss';
 
@@ -11,12 +14,26 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding-bottom: 1.5rem;
-    padding-top: 1.5rem;
+
+    @include media-breakpoint-down(xs) {
+        align-items: stretch;
+    }
 
     &__logo {
         color: $theme-secondary-color;
-        font-size: 5.5rem;
+
+        @include media-breakpoint-down(xs) {
+            padding-right: math.div($grid-gutter-width, 2);
+            padding-bottom: 1rem;
+            padding-top: 1rem;
+            font-size: 3rem;
+        }
+                    
+        @include media-breakpoint-up(sm) {
+            padding-bottom: 1.5rem;
+            padding-top: 1.5rem;
+            font-size: 5.5rem;
+        }
 
         app-icon {
             display: block;
@@ -24,12 +41,30 @@
     }
 
     &__navigation {
+        @include media-breakpoint-down(xs) {
+            flex-grow: 1;
+            margin-right: math.div($grid-gutter-width, -2);
+        }
+
         &-menu {
+            &-txt {
+                @include media-breakpoint-down(xs) {
+                    display: none;
+                }
+            }
+
             ul {
                 display: flex;
                 padding: 1rem;
                 background-color: $theme-secondary-color;
-                border-radius: $border-radius;
+                    
+                @include media-breakpoint-up(sm) {
+                    border-radius: $border-radius;
+                }
+
+                @include media-breakpoint-down(xs) {
+                    justify-content: flex-end;
+                }
             }
 
             li {
@@ -38,8 +73,11 @@
                 }
 
                 app-icon {
-                    margin-right: 0.5rem;
                     vertical-align: middle;
+                    
+                    @include media-breakpoint-up(sm) {
+                        margin-right: 0.5rem;
+                    }
                 }
             }
         }

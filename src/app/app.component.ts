@@ -7,7 +7,7 @@ import { setTheme } from 'ngx-bootstrap/utils';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'gis-test-task';
+  title = 'GIS test task';
 
   constructor() {
     setTheme('bs4'); // manually specify bootstrap version

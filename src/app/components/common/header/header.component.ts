@@ -1,11 +1,5 @@
 import { Component } from '@angular/core';
-
-interface INavItem {
-  routerLink: string;
-  routerLinkActive: string;
-  text?: string;
-  icon?: string;
-}
+import { INavItem } from '../../models/navigation';
 
 @Component({
   selector: 'app-header',
