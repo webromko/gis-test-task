@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { IUserListResponseData } from '../components/models/user';
 import { HttpClient } from '@angular/common/http';
 import { IRepositoryListResponseData } from '../components/models/repository';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,7 @@ import { IRepositoryListResponseData } from '../components/models/repository';
 export class ApiService {
   constructor(private http: HttpClient) { }
 
-  searchUsers(query: string, page: number = 1, per_page: number = 20) {
+  searchUsers(query: string, page: number = 1, per_page: number = 20): Observable<IUserListResponseData> {
     const url = 'https://api.github.com/search/users';
     const options: {[key: string]: any} = {
       responseType: 'json',
@@ -23,7 +24,7 @@ export class ApiService {
     return this.http.get<IUserListResponseData>(url, options);
   }
 
-  searchReposByUserLogin(user: string, page: number = 1, per_page: number = 20) {
+  searchReposByUserLogin(user: string, page: number = 1, per_page: number = 20): Observable<IRepositoryListResponseData> {
     const url = `https://api.github.com/users/${user}/repos`;
     const options: {[key: string]: any} = {
       responseType: 'json',

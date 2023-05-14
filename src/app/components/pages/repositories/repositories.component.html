@@ -1,1 +1,24 @@
-<p>repositories works!</p>
+<div class="container">
+    <div class="row" *ngIf="list?.length !== 0; else emptyMessage">
+        <div
+            *ngFor="let repo of list | slice : (page - 1) * per_page : page * per_page"
+            class="col-xxl-4 col-lg-6 col-md-8 col-sm-12">
+            <app-repository-card [repo]="repo"></app-repository-card>
+        </div>
+        <div class="col-sm-24">
+            <div class="pagination-wrap">
+                <app-pagination
+                    [collectionSize]="list.length || 0"
+                    [page]="page"
+                    (paginationUpdate)="onPaginationUpdate($event)"
+                ></app-pagination>
+            </div>
+        </div>
+    </div>
+
+    <ng-template #emptyMessage>
+        <div class="users__list-empty">
+            <span>The selected user has no public repositories</span>
+        </div>
+    </ng-template>
+</div>

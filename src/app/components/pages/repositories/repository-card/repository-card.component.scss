@@ -1,0 +1,74 @@
+@import '../../../../../variables';
+@import '../../../../../bootstrap-variables';
+
+:host {
+    display: flex;
+    margin-bottom: 3rem;
+    border-radius: 1.5rem;
+    background-color: $theme-secondary-color;
+    width: 100%;
+    align-items: stretch;
+
+    @include media-breakpoint-down(xs) {
+        margin-bottom: 1.5rem;
+    }
+}
+
+.repo {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    &__body {
+        width: 100%;
+        flex-grow: 1;
+        padding: 1rem 1.5rem;
+    }
+
+    &__title {
+        background-color: $theme-main-color;
+        border-top-left-radius: 1.5rem;
+        border-top-right-radius: 1.5rem;
+        padding: 1rem 1.5rem;
+        color: $white;
+        word-break: break-word;
+        width: 100%;
+        flex-shrink: 0;
+
+        a {
+            &,
+            &:hover,
+            &:focus,
+            &:visited {
+                color: $white;
+            }
+        }
+    }
+
+    &__created {
+        margin-bottom: 1rem;
+    }
+
+    &__created,
+    &__updated {
+        font-size: 1.2rem;
+    }
+
+    &__stars {
+        border-top: 0.1rem dashed $theme-main-color;
+        padding: 1rem 1.5rem;
+        width: 100%;
+        flex-shrink: 0;
+        text-align: center;
+
+        &-counter {
+            margin-left: 0.5rem;
+        }
+
+        app-icon {
+            color: $theme-highlight-color;
+            vertical-align: top;
+            font-size: 1.3em;
+        }
+    }
+}

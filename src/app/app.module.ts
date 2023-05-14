@@ -18,6 +18,7 @@ import { IconComponent } from './components/common/icon/icon.component';
 import * as fromApp from './store/app.reducer';
 import { UserModalComponent } from './components/pages/users/user-modal/user-modal.component';
 import { PaginationComponent } from './components/common/pagination/pagination.component';
+import { RepositoryCardComponent } from './components/pages/repositories/repository-card/repository-card.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { PaginationComponent } from './components/common/pagination/pagination.c
     IconComponent,
     UserModalComponent,
     PaginationComponent,
+    RepositoryCardComponent,
   ],
   imports: [
     BrowserModule,

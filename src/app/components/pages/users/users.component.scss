@@ -43,6 +43,15 @@
             @include media-breakpoint-down(xs) {
                 display: block;
             }
+
+            tr {
+                transition: background-color 0.2s ease;
+                cursor: pointer;
+
+                &:hover {
+                    background-color: $theme-highlight-color;
+                }
+            }
         }
 
         tr {

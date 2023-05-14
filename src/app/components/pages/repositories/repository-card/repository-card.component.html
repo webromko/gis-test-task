@@ -1,0 +1,11 @@
+<div class="repo" *ngIf="repo">
+    <div class="repo__title"><a target="_blank" [href]="repo.svn_url">{{ repo.full_name }}</a></div>
+    <div class="repo__body">
+        <div class="repo__created"><b>Created:</b>&nbsp;<span>{{ createdAt | date }}</span></div>
+        <div class="repo__updated"><b>Last updated:</b>&nbsp;<span>{{ updatedAt | date }}</span></div>
+    </div>
+    <div class="repo__stars">
+        <app-icon [iconName]="'star'"></app-icon>
+        <span class="repo__stars-counter">{{ repo.stargazers_count }}</span>
+    </div>
+</div>
