@@ -1,0 +1,29 @@
+<form *ngIf="form" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+        <textarea
+            class="form-control"
+            name="comment"
+            [formControlName]="'message'"
+            [ngClass]="{
+                'is-invalid': form.get('message')?.invalid && form.get('message')?.touched,
+                'is-valid': form.get('message')?.valid && form.get('message')?.touched
+            }"
+        ></textarea>
+    </div>
+    <div class="form-footer">
+        <div class="error-wrapper" *ngIf="form.get('message')?.invalid && form.get('message')?.touched && form.get('message')?.errors">
+            <span *ngFor="let errorMessage of processErrors(form.get('message')?.errors)">{{ errorMessage }}</span>
+        </div>
+        <button
+            *ngIf="comment"
+            type="button"
+            class="btn btn-danger"
+            >Cancel</button>
+        <button
+            type="submit"
+            class="btn btn-success"
+            [ngClass]="{ 'disabled': form.status !== 'VALID' }"
+            [disabled]="form.status !== 'VALID'"
+            >Save</button>
+    </div>
+</form>

@@ -1,0 +1,38 @@
+<div
+    class="favorite-item__info" 
+    [ngClass]="{ 'extended': showComments }"
+    *ngIf="user">
+    <div class="favorite-item__login">
+        <a [routerLink]="'/repositories/' + user.login"><app-icon [iconName]="'user'"></app-icon>&nbsp;{{ user.login }}</a>
+    </div>
+    <div class="favorite-item__url">
+        <span>{{ user.html_url }}</span>
+    </div>
+    <div class="favorite-item__buttons">
+        <button
+            type="button"
+            class="btn btn-outline-primary"
+            [ngClass]="{ 'active': showComments }"
+            (click)="onCommentsToggle()">
+            <app-icon [iconName]="'comment'"></app-icon>
+        </button>
+        <button type="button" class="btn btn-danger" (click)="onRemove()">
+            <app-icon [iconName]="'remove'"></app-icon>
+        </button>
+    </div>
+</div>
+
+<div class="comments-wrap" *ngIf="showComments">
+    <div class="comments-list" *ngIf="comments.length !== 0; else emptyMessage">
+        <app-comment-item *ngFor="let comment of comments"></app-comment-item>
+    </div>
+    <div class="comments-form">
+        <app-comments-form (submitForm)="onCreateComment($event)"></app-comments-form>
+    </div>
+</div>
+
+<ng-template #emptyMessage>
+    <div class="comments-list-empty">
+        <span>The comments list is empty.</span>
+    </div>
+</ng-template>

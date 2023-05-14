@@ -26,11 +26,11 @@
                 <tr *ngFor="let user of list" (click)="onRowClick($event, user)">
                     <td data-th="Login:">
                         <span class="td-inner">
-                            <a [routerLink]="'/repositories/' + user.login">{{ user.login }}</a>
+                            <a [routerLink]="'/repositories/' + user.login"><app-icon [iconName]="'user'"></app-icon>&nbsp;{{ user.login }}</a>
                         </span>
                     </td>
                     <td data-th="Id:"><span class="td-inner">{{ user.id }}</span></td>
-                    <td data-th="Url:"><span class="td-inner">{{ 'https://github.com/' + user.login }}</span></td>
+                    <td data-th="Url:"><span class="td-inner">{{ user.html_url }}</span></td>
                     <td data-th="Type:"><span class="td-inner">{{ user.type }}</span></td>
                     <td data-th="Score:"><span class="td-inner">{{ user.score }}</span></td>
                     <td data-th="Add to fav:" class="fav-column">

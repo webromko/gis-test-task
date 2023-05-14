@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { INavItem } from '../../models/navigation';
 import { Store, select } from '@ngrx/store';
-import * as fromApp from '../../../store/app.reducer';
 import { Observable } from 'rxjs';
 import { IUserListItem } from '../../models/user';
+import * as fromApp from '../../../store/app.reducer';
 
 @Component({
   selector: 'app-header',
@@ -30,6 +30,6 @@ export class HeaderComponent {
   ];
 
   constructor(private store: Store<fromApp.AppState>) {
-    this.favoritesState = this.store.pipe(select(fromApp.favoriteUsers))
+    this.favoritesState = this.store.pipe(select(fromApp.favoriteUsers));
   }
 }

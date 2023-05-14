@@ -1,4 +1,4 @@
-@import './../../../../bootstrap-variables.scss';
+@import './../../../../bootstrap-variables';
 
 :host {
     display: block;
@@ -122,6 +122,13 @@
                 @include media-breakpoint-down(xs) {
                     padding: 0.3rem;
                     flex-grow: 1;
+                }
+            }
+
+            a {
+                app-icon {
+                    position: relative;
+                    top: 0.2rem;
                 }
             }
         }

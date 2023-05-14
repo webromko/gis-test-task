@@ -1,0 +1,183 @@
+@import '../../../../../variables';
+@import '../../../../../bootstrap-variables';
+
+:host {
+    display: block;
+    border: 0.1rem solid $theme-main-color;
+    overflow: hidden;
+    border-radius: 1rem;
+
+    &:not(:last-child) {
+        margin-bottom: 1.5rem;
+    }
+}
+
+.favorite-item {
+    &__info {
+        background-color: $theme-secondary-color;
+        border-radius: 0.9rem;
+        display: flex;
+        overflow: hidden;
+
+        @include media-breakpoint-only(xs) {
+            flex-wrap: wrap;
+        }
+
+        &.extended {
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+    }
+
+    &__login {
+        flex-shrink: 0;
+        padding: 1rem;
+
+        @include media-breakpoint-only(xs) {
+            width: 75%;
+            flex-basis: 75%;
+        }
+
+        @include media-breakpoint-only(sm) {
+            width: 25%;
+            flex-basis: 25%;
+        }
+
+        @include media-breakpoint-only(md) {
+            width: 20%;
+            flex-basis: 20%;
+        }
+
+        @include media-breakpoint-only(lg) {
+            width: 20%;
+            flex-basis: 20%;
+        }
+
+        @include media-breakpoint-only(xl) {
+            width: 20%;
+            flex-basis: 20%;
+        }
+
+        @include media-breakpoint-only(xxl) {
+            width: 18%;
+            flex-basis: 18%;
+        }
+
+        a {
+            display: block;
+            max-width: 100%;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+
+            app-icon {
+                position: relative;
+                top: 0.2rem;
+            }
+        }
+    }
+
+    &__url {
+        padding: 1rem;
+        flex-grow: 1;
+
+        @include media-breakpoint-only(xs) {
+            order: 1;
+            width: 100%;
+            flex-basis: 100%;
+            padding-top: 0;
+        }
+
+        @include media-breakpoint-only(sm) {
+            width: 55%;
+            flex-basis: 55%;
+        }
+
+        @include media-breakpoint-only(md) {
+            width: 66%;
+            flex-basis: 66%;
+        }
+
+        @include media-breakpoint-only(lg) {
+            width: 68%;
+            flex-basis: 68%;
+        }
+
+        @include media-breakpoint-only(xl) {
+            width: 70%;
+            flex-basis: 70%;
+        }
+
+        @include media-breakpoint-only(xxl) {
+            width: 75%;
+            flex-basis: 75%;
+        }
+
+        span {
+            display: block;
+            max-width: 100%;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    }
+
+    &__buttons {
+        padding: 1rem;
+        flex-shrink: 0;
+        text-align: right;
+
+        @include media-breakpoint-only(xs) {
+            width: 25%;
+            flex-basis: 25%;
+        }
+
+        @include media-breakpoint-only(sm) {
+            width: 20%;
+            flex-basis: 20%;
+        }
+
+        @include media-breakpoint-only(md) {
+            width: 14%;
+            flex-basis: 14%;
+        }
+
+        @include media-breakpoint-only(lg) {
+            width: 12%;
+            flex-basis: 12%;
+        }
+
+        @include media-breakpoint-only(xl) {
+            width: 10%;
+            flex-basis: 10%;
+        }
+        @include media-breakpoint-only(xxl) {
+            width: 7%;
+            flex-basis: 7%;
+        }
+
+        .btn {
+            &:not(:last-child) {
+                margin-right: 0.5rem;
+            }
+        }
+
+        app-icon {
+            display: block;
+        }
+    }
+}
+
+.comments-wrap {
+    padding: 1.5rem;
+}
+
+.comments-list-empty {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+    text-align: center;
+}
+
+.comments-form {
+    margin-top: 1.5rem;
+}

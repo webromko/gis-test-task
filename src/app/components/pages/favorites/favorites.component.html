@@ -1,1 +1,11 @@
-<p>favorites works!</p>
+<div class="container">
+    <div class="favorites-list" *ngIf="(list | async)?.length !== 0; else emptyMessage">
+        <app-favorite-item *ngFor="let item of list | async" [user]="item"></app-favorite-item>
+    </div>
+</div>
+
+<ng-template #emptyMessage>
+    <div class="favorites-list-empty">
+        <span>The favorites list is empty.</span>
+    </div>
+</ng-template>

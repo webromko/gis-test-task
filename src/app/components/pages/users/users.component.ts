@@ -2,11 +2,11 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { ApiService } from 'src/app/services/api.service';
 import { IUserListItem, IUserListResponseData } from '../../models/user';
-import * as fromApp from '../../../store/app.reducer';
-import * as FavoritesActions from '../favorites/store/favorites.actions';
 import { Subscription, debounceTime } from 'rxjs';
 import { FormControl, FormGroup } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import * as fromApp from '../../../store/app.reducer';
+import * as FavoritesActions from '../favorites/store/favorites.actions';
 import { UserModalComponent } from './user-modal/user-modal.component';
 
 interface extendedTarget extends EventTarget {

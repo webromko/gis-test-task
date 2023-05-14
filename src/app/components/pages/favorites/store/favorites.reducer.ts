@@ -1,16 +1,13 @@
-import { IRepository } from 'src/app/components/models/repository';
 import { IUserListItem } from 'src/app/components/models/user';
 import * as fromFavoritesListActions from './favorites.actions';
 import { LocalstorageUtils } from 'src/app/utils/localstorage.utils';
 
 export interface State {
     users: IUserListItem[];
-    // repositories: IRepository[];
 }
 
 const initialState: State = {
     users: [],
-    // repositories: [],
 };
 
 const localStorageKey = 'favoritesState';
@@ -40,27 +37,6 @@ export function favoritesListReducer(
                 ...state,
                 users: [...copyUsersArray],
             });
-
-        // case fromFavoritesListActions.ADD_REPO:
-        //     const isRepoExist = state.repositories.some((item: IRepository) => item.id === action.payload.id);
-
-        //     if (isRepoExist) return LocalstorageUtils.saveAndReturnData<State>(localStorageKey, state);
-
-        //     return LocalstorageUtils.saveAndReturnData<State>(localStorageKey, {
-        //         ...state,
-        //         repositories: [...state.repositories, action.payload],
-        //     });
-
-        // case fromFavoritesListActions.REMOVE_REPO:
-        //     const repoIndex = state.repositories.map((item: IRepository) => item.id).indexOf(action.payload);
-        //     const copyReposArray = state.repositories.slice(0);
-
-        //     copyReposArray.splice(repoIndex, 1);
-
-        //     return LocalstorageUtils.saveAndReturnData<State>(localStorageKey, {
-        //         ...state,
-        //         repositories: [...copyReposArray],
-        //     });
 
         default:
             return LocalstorageUtils.saveAndReturnData<State>(localStorageKey, state);

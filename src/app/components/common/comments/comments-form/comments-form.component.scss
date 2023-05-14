@@ -1,0 +1,27 @@
+@import '../../../../../variables';
+@import '../../../../../bootstrap-variables';
+
+:host {
+    display: block;
+}
+
+.form-footer {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+
+    .error-wrapper {
+        color: $red;
+        font-size: 1.2rem;
+        padding-right: 1.4rem;
+        flex-grow: 1;
+    }
+
+    .btn {
+        flex-shrink: 0;
+
+        &:not(:last-child) {
+            margin-right: 0.5rem;
+        }
+    }
+}

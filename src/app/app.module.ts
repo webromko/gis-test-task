@@ -19,6 +19,9 @@ import * as fromApp from './store/app.reducer';
 import { UserModalComponent } from './components/pages/users/user-modal/user-modal.component';
 import { PaginationComponent } from './components/common/pagination/pagination.component';
 import { RepositoryCardComponent } from './components/pages/repositories/repository-card/repository-card.component';
+import { FavoriteItemComponent } from './components/pages/favorites/favorite-item/favorite-item.component';
+import { CommentItemComponent } from './components/common/comments/comment-item/comment-item.component';
+import { CommentsFormComponent } from './components/common/comments/comments-form/comments-form.component';
 
 @NgModule({
   declarations: [
@@ -33,11 +36,14 @@ import { RepositoryCardComponent } from './components/pages/repositories/reposit
     UserModalComponent,
     PaginationComponent,
     RepositoryCardComponent,
+    FavoriteItemComponent,
+    CommentItemComponent,
+    CommentsFormComponent,
   ],
   imports: [
     BrowserModule,
-    HttpClientModule,
     CommonModule,
+    HttpClientModule,
     AppRoutingModule,
     ReactiveFormsModule,
     StoreModule.forRoot(fromApp.appReducer),
