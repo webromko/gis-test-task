@@ -3,6 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { StoreModule } from '@ngrx/store';
+import { ReactiveFormsModule } from '@angular/forms';
+import { NgbModalModule, NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,6 +16,8 @@ import { FavoritesComponent } from './components/pages/favorites/favorites.compo
 import { ErrorComponent } from './components/pages/error/error.component';
 import { IconComponent } from './components/common/icon/icon.component';
 import * as fromApp from './store/app.reducer';
+import { UserModalComponent } from './components/pages/users/user-modal/user-modal.component';
+import { PaginationComponent } from './components/common/pagination/pagination.component';
 
 @NgModule({
   declarations: [
@@ -25,13 +29,18 @@ import * as fromApp from './store/app.reducer';
     FavoritesComponent,
     ErrorComponent,
     IconComponent,
+    UserModalComponent,
+    PaginationComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     CommonModule,
     AppRoutingModule,
+    ReactiveFormsModule,
     StoreModule.forRoot(fromApp.appReducer),
+    NgbModalModule,
+    NgbPaginationModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

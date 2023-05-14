@@ -1,7 +1,17 @@
 <div class="container">
-    <div class="users__search"></div>
+    <form class="users__search" [formGroup]="searchForm">
+        <div class="form-group">
+            <input
+                class="form-control"
+                type="text"
+                name="search"
+                placeholder="Search users by login"
+                [formControlName]="'searchControl'"
+            />
+        </div>
+    </form>
     <div class="users__list">
-        <table>
+        <table *ngIf="list.length; else emptyMessage">
             <thead>
                 <tr>
                     <th>Login</th>
@@ -13,15 +23,22 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let user of list">
-                    <td data-th="Login:"><span class="td-inner"><a [href]="user.url">{{ user.login }}</a></span></td>
+                <tr *ngFor="let user of list" (click)="onRowClick($event, user)">
+                    <td data-th="Login:">
+                        <span class="td-inner">
+                            <a [routerLink]="'/repositories/' + user.login">{{ user.login }}</a>
+                        </span>
+                    </td>
                     <td data-th="Id:"><span class="td-inner">{{ user.id }}</span></td>
-                    <td data-th="Url:"><span class="td-inner">{{ user.url }}</span></td>
+                    <td data-th="Url:"><span class="td-inner">{{ 'https://github.com/' + user.login }}</span></td>
                     <td data-th="Type:"><span class="td-inner">{{ user.type }}</span></td>
                     <td data-th="Score:"><span class="td-inner">{{ user.score }}</span></td>
                     <td data-th="Add to fav:" class="fav-column">
                         <span class="td-inner">
-                            <button type="button" class="btn btn-primary fav-btn">
+                            <button
+                                type="button"
+                                [ngClass]="['btn', 'fav-btn', isAddedToFav(user.id) ? 'btn-danger' : 'btn-primary']"
+                                (click)="onToggleFav(user)">
                                 <app-icon [iconName]="'favorites'"></app-icon>
                             </button>
                         </span>
@@ -29,5 +46,19 @@
                 </tr>
             </tbody>
         </table>
+
+        <app-pagination
+            *ngIf="list.length"
+            [collectionSize]="total_count"
+            [page]="page"
+            (paginationUpdate)="onPaginationUpdate($event)"
+        ></app-pagination>
     </div>
 </div>
+
+
+<ng-template #emptyMessage>
+    <div class="users__list-empty">
+        <span>No users were found matching your search criteria. Try again.</span>
+    </div>
+</ng-template>

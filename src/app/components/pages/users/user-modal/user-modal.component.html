@@ -1,0 +1,18 @@
+<div class="modal-header">
+    <h4 class="modal-title">{{ user?.login }}</h4>
+    <button type="button" class="close" aria-label="Close" (click)="closeModal('Cross click')">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+
+<div class="modal-body">
+    <div class="avatar-image" *ngIf="user !== null; else emptyMessage">
+        <img *ngIf="user.avatar_url" [src]="user.avatar_url" [attr.alt]="user.login + ' avatar'">
+    </div>
+</div>
+
+<ng-template #emptyMessage>
+    <div class="avatar-empty">
+        <span>This user does not have an avatar image.</span>
+    </div>
+</ng-template>

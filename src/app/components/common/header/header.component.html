@@ -1,5 +1,5 @@
 <div class="container">
-    <div class="header">
+    <header class="header">
         <div class="header__logo">
             <app-icon [iconName]="'logo'"></app-icon>
         </div>
@@ -13,10 +13,11 @@
                             [routerLinkActive]="navItem.routerLinkActive">
                             <app-icon *ngIf="navItem.icon" [iconName]="navItem.icon"></app-icon>
                             <span class="header__navigation-menu-txt" *ngIf="navItem.text">{{ navItem.text }}</span>
+                            <span *ngIf="navItem.type === 'favorites' && (favoritesState | async)?.length !== 0" class="badge badge-light">{{ (favoritesState | async)?.length }}</span>
                         </a>
                     </li>
                 </ul>
             </div>
         </nav>
-    </div>
+    </header>
 </div>

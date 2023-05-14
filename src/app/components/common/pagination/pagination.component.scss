@@ -1,0 +1,11 @@
+:host {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+
+    .form-control {
+        margin-left: 0.5rem;
+        width: 5rem !important;
+        text-align: center;
+    }
+}

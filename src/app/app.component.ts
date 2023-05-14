@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { setTheme } from 'ngx-bootstrap/utils';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +8,5 @@ import { setTheme } from 'ngx-bootstrap/utils';
 export class AppComponent {
   title = 'GIS test task';
 
-  constructor() {
-    setTheme('bs4'); // manually specify bootstrap version
-  }
+  constructor() {}
 }

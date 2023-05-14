@@ -5,9 +5,23 @@
 }
 
 .users__list {
+    &-empty {
+        padding-top: 5rem;
+        padding-bottom: 5rem;
+        text-align: center;
+    }
+
     table {
         width: 100%;
         max-width: 100%;
+        
+        @include media-breakpoint-down(xs) {
+            display: block;
+        }
+
+        &:not(:last-child) {
+            margin-bottom: 3rem;
+        }
 
         th, td {
             padding: 0.3rem;
@@ -17,12 +31,6 @@
         th {
             background-color: $theme-secondary-color;
             white-space: nowrap;
-        }
-
-        table {
-            @include media-breakpoint-down(xs) {
-                display: block;
-            }
         }
 
         thead {

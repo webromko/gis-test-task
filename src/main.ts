@@ -1,5 +1,9 @@
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+/******************************************************************
+ * Load `$localize` - used if i18n tags appear in Angular templates.
+ */
+import '@angular/localize/init';
 
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { AppModule } from './app/app.module';
 
 
