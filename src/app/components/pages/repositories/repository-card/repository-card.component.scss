@@ -8,9 +8,17 @@
     background-color: $theme-secondary-color;
     width: 100%;
     align-items: stretch;
+    position: relative;
+    overflow: hidden;
 
     @include media-breakpoint-down(xs) {
         margin-bottom: 1.5rem;
+    }
+
+    &:hover {
+        .repo__decor {
+            transform: scale(1.2) translate(-1rem, -1rem);
+        }
     }
 }
 
@@ -18,6 +26,8 @@
     display: flex;
     flex-direction: column;
     width: 100%;
+    position: relative;
+    z-index: 2;
 
     &__body {
         width: 100%;
@@ -70,5 +80,17 @@
             vertical-align: top;
             font-size: 1.3em;
         }
+    }
+
+    &__decor {
+        transition: transform 0.2s ease;
+        position: absolute;
+        z-index: 1;
+        right: 0;
+        bottom: 0;
+        font-size: 10rem;
+        color: $theme-main-color;
+        pointer-events: none;
+        opacity: 0.2;
     }
 }
