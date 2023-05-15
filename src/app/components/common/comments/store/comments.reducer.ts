@@ -16,7 +16,6 @@ export function commentsListReducer(
 ) {
     switch (action.type) {
         case fromCommentsListActions.ADD_COMMENT:
-
             return LocalstorageUtils.saveAndReturnData<State>(localStorageKey, {
                 ...state,
                 [action.payload.userId]: [...(state[action.payload.userId] || []), action.payload.comment],
@@ -37,13 +36,11 @@ export function commentsListReducer(
 
             if (state[action.payload.userId].length === 1) {
                 delete stateCopy[action.payload.userId];
-
-                return LocalstorageUtils.saveAndReturnData<State>(localStorageKey, { ...stateCopy });
             } else {
                 stateCopy[action.payload.userId].splice(action.payload.index, 1);
-    
-                return LocalstorageUtils.saveAndReturnData<State>(localStorageKey, { ...stateCopy });
             }
+
+            return LocalstorageUtils.saveAndReturnData<State>(localStorageKey, { ...stateCopy });
 
         case fromCommentsListActions.REMOVE_ALL_COMMENTS:
             const existingStateCopy = {...state};

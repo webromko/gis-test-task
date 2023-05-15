@@ -1,8 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { IComment } from 'src/app/components/models/comments';
 import { Store } from '@ngrx/store';
+import { IComment } from 'src/app/components/models/comments';
 import * as fromApp from '../../../../store/app.reducer';
-import * as CommentsActions from '../../../common/comments/store/comments.actions';
+import * as fromCommentsActions from '../../../common/comments/store/comments.actions';
 
 @Component({
   selector: 'app-comment-item',
@@ -30,7 +30,7 @@ export class CommentItemComponent implements OnInit {
     this.editMode = false;
 
     if (this.userId !== undefined && this.index !== undefined) {
-      this.store.dispatch(new CommentsActions.EditCommentByIndex({
+      this.store.dispatch(new fromCommentsActions.EditCommentByIndex({
         index: this.index,
         userId: this.userId,
         comment,
@@ -42,7 +42,7 @@ export class CommentItemComponent implements OnInit {
     this.editMode = false;
 
     if (this.userId !== undefined && this.index !== undefined) {
-      this.store.dispatch(new CommentsActions.RemoveCommentByIndex({
+      this.store.dispatch(new fromCommentsActions.RemoveCommentByIndex({
         index: this.index,
         userId: this.userId,
       }));

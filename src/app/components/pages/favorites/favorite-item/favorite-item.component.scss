@@ -151,6 +151,7 @@
             width: 10%;
             flex-basis: 10%;
         }
+
         @include media-breakpoint-only(xxl) {
             width: 7%;
             flex-basis: 7%;

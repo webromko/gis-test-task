@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { INavItem } from '../../models/navigation';
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
+import { INavItem } from '../../models/navigation';
 import { IUserListItem } from '../../models/user';
 import * as fromApp from '../../../store/app.reducer';
 

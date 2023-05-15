@@ -1,13 +1,13 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Store, select } from '@ngrx/store';
-import { ApiService } from 'src/app/services/api.service';
-import { IUserListItem, IUserListResponseData } from '../../models/user';
-import { Subscription, debounceTime } from 'rxjs';
 import { FormControl, FormGroup } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import * as fromApp from '../../../store/app.reducer';
-import * as FavoritesActions from '../favorites/store/favorites.actions';
+import { Subscription, debounceTime } from 'rxjs';
+import { ApiService } from 'src/app/services/api.service';
+import { IUserListItem, IUserListResponseData } from '../../models/user';
 import { UserModalComponent } from './user-modal/user-modal.component';
+import * as fromApp from '../../../store/app.reducer';
+import * as fromFavoritesActions from '../favorites/store/favorites.actions';
 
 interface extendedTarget extends EventTarget {
   closest: any;
@@ -44,8 +44,6 @@ export class UsersComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.searchUsers();
-
     this.favoriteUsersSubscription = this.store.pipe(select(fromApp.favoriteUsers))
       .subscribe((favoriteUsers: IUserListItem[]) => {
         this.favoriteUsersList = [...favoriteUsers];
@@ -73,17 +71,17 @@ export class UsersComponent implements OnInit, OnDestroy {
     if (!this.searchString) {
       this.clearList();
     } else {
-      this.api.searchUsers(this.searchString, this.page, this.per_page).subscribe(
-        (data: IUserListResponseData) => {
+      this.api.searchUsers(this.searchString, this.page, this.per_page).subscribe({
+        next: (data: IUserListResponseData) => {
           if (clear) this.clearList();
 
           this.updateList(data.items, data.total_count);
         },
-        (err) => {
+        error: (err) => {
           console.error(err);
           this.clearList();
         },
-      );
+      });
     }
   }
 
@@ -98,11 +96,11 @@ export class UsersComponent implements OnInit, OnDestroy {
   }
 
   addToFav(user: IUserListItem): void {
-    this.store.dispatch(new FavoritesActions.AddUser(user));
+    this.store.dispatch(new fromFavoritesActions.AddUser(user));
   }
 
   removeFromFav(userId: number): void {
-    this.store.dispatch(new FavoritesActions.RemoveUser(userId));
+    this.store.dispatch(new fromFavoritesActions.RemoveUser(userId));
   }
 
   openUserModal(user: IUserListItem): void {

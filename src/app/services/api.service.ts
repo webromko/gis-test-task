@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { IUserListResponseData } from '../components/models/user';
 import { HttpClient } from '@angular/common/http';
+import { IUserListResponseData } from '../components/models/user';
 import { IRepositoryListResponseData } from '../components/models/repository';
 import { Observable } from 'rxjs';
 

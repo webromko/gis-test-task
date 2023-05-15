@@ -1,12 +1,12 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Store, select } from '@ngrx/store';
-import { IUserListItem } from 'src/app/components/models/user';
 import { Observable, Subscription } from 'rxjs';
+import { IUserListItem } from 'src/app/components/models/user';
+import { IComment } from 'src/app/components/models/comments';
 import * as fromApp from '../../../../store/app.reducer';
 import * as fromComments from '../../../common/comments/store/comments.reducer';
-import * as FavoritesActions from '../../favorites/store/favorites.actions';
-import * as CommentsActions from '../../../common/comments/store/comments.actions';
-import { IComment } from 'src/app/components/models/comments';
+import * as fromFavoritesActions from '../../favorites/store/favorites.actions';
+import * as fromCommentsActions from '../../../common/comments/store/comments.actions';
 
 @Component({
   selector: 'app-favorite-item',
@@ -42,13 +42,13 @@ export class FavoriteItemComponent implements OnInit, OnDestroy {
 
   onRemove(): void {
     if (this.user) {
-      this.store.dispatch(new FavoritesActions.RemoveUser(this.user.id));
+      this.store.dispatch(new fromFavoritesActions.RemoveUser(this.user.id));
     }
   }
 
   onCreateComment(comment: IComment): void {
     if (this.user) {
-      this.store.dispatch(new CommentsActions.AddComment({
+      this.store.dispatch(new fromCommentsActions.AddComment({
         userId: this.user.id,
         comment,
       }));

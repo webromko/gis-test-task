@@ -1,6 +1,6 @@
 import { IUserListItem } from 'src/app/components/models/user';
-import * as fromFavoritesListActions from './favorites.actions';
 import { LocalstorageUtils } from 'src/app/utils/localstorage.utils';
+import * as fromFavoritesListActions from './favorites.actions';
 
 export interface State {
     users: IUserListItem[];

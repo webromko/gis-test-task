@@ -20,17 +20,3 @@ export class RepositoryCardComponent implements OnInit {
     }
   }
 }
-
-
-/*
-
-
-Project Nam
-
-Creation DateTime
-
-Last Update DateTime
-
-Count of stars
-
-*/

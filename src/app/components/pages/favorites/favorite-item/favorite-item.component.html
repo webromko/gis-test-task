@@ -15,7 +15,7 @@
             [ngClass]="{ 'active': showComments }"
             (click)="onCommentsToggle()">
             <app-icon [iconName]="'comment'"></app-icon>
-            <span *ngIf=" comments.length !== 0" class="badge badge-light">{{ comments.length }}</span>
+            <span *ngIf="comments.length !== 0" class="badge badge-light">{{ comments.length }}</span>
         </button>
         <button type="button" class="btn btn-danger" (click)="onRemove()">
             <app-icon [iconName]="'remove'"></app-icon>

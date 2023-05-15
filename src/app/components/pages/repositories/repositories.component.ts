@@ -23,14 +23,14 @@ export class RepositoriesComponent implements OnInit {
   }
 
   searchRepos() {
-    this.api.searchReposByUserLogin(this.userLogin, this.page, this.fake_total_count).subscribe(
-      (reposList: IRepositoryListResponseData) => {
+    this.api.searchReposByUserLogin(this.userLogin, this.page, this.fake_total_count).subscribe({
+      next: (reposList: IRepositoryListResponseData) => {
         this.list = [...reposList];
       },
-      (err) => {
+      error: (err) => {
         console.error(err);
       },
-    );
+    });
   }
 
   onPaginationUpdate(page: number):void {
