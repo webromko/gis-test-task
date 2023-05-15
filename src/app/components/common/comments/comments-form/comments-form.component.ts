@@ -14,6 +14,7 @@ export interface IErrorSet {
 export class CommentsFormComponent implements OnInit {
   @Input() comment: IComment | undefined;
   @Output() submitForm: EventEmitter<IComment> = new EventEmitter();
+  @Output() cancelEdit: EventEmitter<void> = new EventEmitter();
   form: FormGroup | null = null;
   errorSet: IErrorSet = {
     minlength: (e: any) => `Minimum character size ${e.requiredLength}. Actual size is ${e.actualLength}`,
@@ -44,6 +45,10 @@ export class CommentsFormComponent implements OnInit {
     });
 
     this.form?.reset();
+  }
+
+  onCancelEdit(): void {
+    this.cancelEdit.emit();
   }
 
   processErrors(errors: any): string[] {

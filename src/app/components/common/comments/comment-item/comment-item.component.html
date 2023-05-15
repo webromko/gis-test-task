@@ -1,1 +1,35 @@
-<p>comment-item works!</p>
+<div class="comment-inner" *ngIf="comment">
+    <div class="comments-form-wrap" *ngIf="editMode; else commentMessage">
+        <app-comments-form
+            [comment]="comment"
+            (submitForm)="onConfirmEditComment($event)"
+            (cancelEdit)="onCancelEdit()"
+        ></app-comments-form>
+    </div>
+    <div class="comment-tools" *ngIf="!editMode">
+        <button type="button"
+            class="btn btn-primary"
+            (click)="onEnableEdit()">
+            <app-icon [iconName]="'edit'"></app-icon>
+        </button>
+        <button type="button"
+            class="btn btn-danger"
+            (click)="onRemoveComment()">
+            <app-icon [iconName]="'remove'"></app-icon>
+        </button>
+    </div>
+    <div class="comment-footer">
+        <div class="comment-created">
+            <b>Created at:</b>&nbsp;<span>{{ createdAt | date: 'medium' }}</span>
+        </div>
+        <div class="comment-updated">
+            <b>Updated at:</b>&nbsp;<span>{{ updatedAt | date: 'medium' }}</span>
+        </div>
+    </div>
+</div>
+
+<ng-template #commentMessage>
+    <div class="comment-message">
+        <span>{{ comment?.message }}</span>
+    </div>
+</ng-template>

@@ -11,10 +11,11 @@
     <div class="favorite-item__buttons">
         <button
             type="button"
-            class="btn btn-outline-primary"
+            class="btn btn-outline-primary btn-comments-toggle"
             [ngClass]="{ 'active': showComments }"
             (click)="onCommentsToggle()">
             <app-icon [iconName]="'comment'"></app-icon>
+            <span *ngIf=" comments.length !== 0" class="badge badge-light">{{ comments.length }}</span>
         </button>
         <button type="button" class="btn btn-danger" (click)="onRemove()">
             <app-icon [iconName]="'remove'"></app-icon>
@@ -24,7 +25,12 @@
 
 <div class="comments-wrap" *ngIf="showComments">
     <div class="comments-list" *ngIf="comments.length !== 0; else emptyMessage">
-        <app-comment-item *ngFor="let comment of comments"></app-comment-item>
+        <app-comment-item
+            *ngFor="let comment of comments; let i = index"
+            [index]="i"
+            [comment]="comment"
+            [userId]="user?.id"
+        ></app-comment-item>
     </div>
     <div class="comments-form">
         <app-comments-form (submitForm)="onCreateComment($event)"></app-comments-form>

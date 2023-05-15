@@ -181,3 +181,14 @@
 .comments-form {
     margin-top: 1.5rem;
 }
+
+.btn-comments-toggle {
+    position: relative;
+
+    .badge {
+        position: absolute;
+        z-index: 1;
+        right: -0.4rem;
+        top: -0.9rem;
+    }
+}

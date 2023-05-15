@@ -1,3 +1,70 @@
+@import '../../../../../variables';
+@import '../../../../../bootstrap-variables';
+
 :host {
-    display: block;
+    display: flex;
+    justify-content: flex-end;
+    padding-bottom: 1.5rem;
+}
+
+.comment-inner {
+    position: relative;
+    border-top-left-radius: 1.5rem;
+    border-top-right-radius: 1.5rem;
+    border-bottom-left-radius: 1.5rem;
+    border: 0.1rem solid $theme-main-color;
+    background-color: $theme-main-color;
+    color: $white;
+
+    &:hover {
+        .comment-tools {
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+}
+
+.comment-tools {
+    transition: opacity 0.2s ease, visibility 0.2s ease;
+    background-color: $theme-secondary-color;
+    position: absolute;
+    padding: 0.5rem;
+    border-radius: $border-radius;
+    right: 0.2rem;
+    bottom: 0.2rem;
+    opacity: 0;
+    visibility: hidden;
+
+    .btn {
+        &:not(:last-child) {
+            margin-right: 0.5rem;
+        }
+
+        app-icon {
+            display: block;
+        }
+    }
+}
+
+.comment-message {
+    padding: 1.5rem;
+}
+
+.comment-footer {
+    font-size: 1.2rem;
+    display: flex;
+    justify-content: flex-end;
+    color: $theme-secondary-color;
+    border-top: 0.1rem dotted $theme-secondary-color;
+    flex-wrap: wrap;
+}
+
+.comment-created,
+.comment-updated {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+}
+
+.comments-form-wrap {
+    padding: 1.5rem;
 }

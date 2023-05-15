@@ -33,7 +33,7 @@ export function commentsListReducer(
             });
 
         case fromCommentsListActions.REMOVE_COMMENT:
-            const stateCopy = {...state};
+            const stateCopy = JSON.parse(JSON.stringify(state));
 
             if (state[action.payload.userId].length === 1) {
                 delete stateCopy[action.payload.userId];
@@ -42,10 +42,7 @@ export function commentsListReducer(
             } else {
                 stateCopy[action.payload.userId].splice(action.payload.index, 1);
     
-                return LocalstorageUtils.saveAndReturnData<State>(localStorageKey, {
-                    ...state,
-                    users: [...stateCopy[action.payload.userId]],
-                });
+                return LocalstorageUtils.saveAndReturnData<State>(localStorageKey, { ...stateCopy });
             }
 
         case fromCommentsListActions.REMOVE_ALL_COMMENTS:
